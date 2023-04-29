@@ -8,21 +8,19 @@ app.use(express.json());
 app.use(cors());
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017/todo-app", {
+  .connect("mongodb://127.0.0.1:27017/react-todo", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
-  .then(() => {
-    console.log("Connected to MongoDB");
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(console.error);
 
+// Models
 const Todo = require("./models/Todo");
 
 app.get("/todos", async (req, res) => {
   const todos = await Todo.find();
+
   res.json(todos);
 });
 
@@ -30,22 +28,36 @@ app.post("/todo/new", (req, res) => {
   const todo = new Todo({
     text: req.body.text,
   });
+
   todo.save();
+
   res.json(todo);
 });
 
-app.delete("/todos/delete/:id", async (req, res) => {
+app.delete("/todo/delete/:id", async (req, res) => {
   const result = await Todo.findByIdAndDelete(req.params.id);
-  res.json(result);
+
+  res.json({ result });
 });
 
-app.put("/todos/complete/:id", async (req, res) => {
-  const result = await Todo.findByIdAndUpdate(req.params.id, {
-    complete: true,
-  });
-  res.json(result);
+app.get("/todo/complete/:id", async (req, res) => {
+  const todo = await Todo.findById(req.params.id);
+
+  todo.complete = !todo.complete;
+
+  todo.save();
+
+  res.json(todo);
 });
 
-app.listen(3000, () => {
-  console.log("Server is running on port 3000");
+app.get("/todo/update/:id", async (req, res) => {
+  const todo = await Todo.findById(req.params.id);
+
+  todo.text = req.body.text;
+
+  todo.save();
+
+  res.json(todo);
 });
+
+app.listen(3001);
