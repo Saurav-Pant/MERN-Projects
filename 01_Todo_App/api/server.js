@@ -18,6 +18,8 @@ mongoose
 // Models
 const Todo = require("./models/Todo");
 
+//Routes
+
 app.get("/todos", async (req, res) => {
   const todos = await Todo.find();
 
@@ -54,9 +56,7 @@ app.get("/todo/update/:id", async (req, res) => {
   const todo = await Todo.findById(req.params.id);
 
   todo.text = req.body.text;
-
   todo.save();
-
   res.json(todo);
 });
 
