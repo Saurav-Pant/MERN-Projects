@@ -1,10 +1,12 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
-import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import Create from "./components/Create";
 import { ThemeContext } from "./context/theme";
 import Navbar from "./components/Navbar";
+import Authentication from "./pages/Authentication";
+import Home from "./pages/Home";
+import Footer from "./components/Footer";
 
 const App = () => {
   const { theme } = React.useContext(ThemeContext);
@@ -18,10 +20,12 @@ const App = () => {
     >
       <Navbar />
       <Routes>
-        <Route exact path="/" element={<Login />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/" element={<Home />} />
+        <Route exact path="/authentication" element={<Authentication />} />
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create" element={<Create />} />
       </Routes>
+      <Footer />
     </div>
   );
 };
