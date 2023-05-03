@@ -1,5 +1,6 @@
 import React from "react";
 import last from "../asset/last.png";
+import {Link} from "react-router-dom";
 
 const Header = () => {
   return (
@@ -10,13 +11,16 @@ const Header = () => {
             <h1 className="text-5xl md:text-[6vw] lg:text-8xl font-black">
               Expense Tracker
             </h1>
-            <p className="text-sm sm:text-base md:text-2xl opacity-60 dark:opacity-80 mb-2 md:mb-4">
+            <p className="text-base sm:text-base md:text-2xl opacity-60 dark:opacity-80 mb-2 md:mb-4">
               A website where you can keep track of your Expenses
               <br />
               contribute to open source in the same time.
             </p>
-            <button class="rounded bg-blue-500 hover:bg-blue-700 py-2 px-4 mx-8 text-white"> Get Started</button>
-
+            <Link to="/Authentication">
+              <button className="rounded-md bg-blue-500 hover:bg-blue-700 py-2 px-4 mx-8 text-white">
+                  Sign In
+              </button>
+            </Link>
           </div>
           <img src={last} alt="header" />
         </div>
