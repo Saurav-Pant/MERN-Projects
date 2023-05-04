@@ -1,20 +1,26 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const passport = require("passport");
 
-const GOOGLE_CLIENT_ID =
-  "311210694533-tssbtfl1396eock30n6lbjntroj5n5k7.apps.googleusercontent.com";
-const GOOGLE_CLIENT_SECRET = "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";
+// Load environment variables or configuration file
+// const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = require('./config');
 
 passport.use(
   new GoogleStrategy(
     {
-      clientID: GOOGLE_CLIENT_ID,
-      clientSecret: GOOGLE_CLIENT_SECRET,
+      clientID:
+        "311210694533-tssbtfl1396eock30n6lbjntroj5n5k7.apps.googleusercontent.com",
+      // process.env.GOOGLE_CLIENT_ID,
+      clientSecret: "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",
+      // process.env.GOOGLE_CLIENT_SECRET,
       callbackURL: "/auth/google/callback",
     },
-    function (accessToken, refreshToken, profile, done) {
-      console.log(profile);
-      done(null, profile);
+    async function (accessToken, refreshToken, profile, done) {
+      try {
+        console.log(profile);
+        done(null, profile);
+      } catch (err) {
+        done(err);
+      }
     }
   )
 );
