@@ -1,6 +1,7 @@
 import React from "react";
+import { motion } from 'framer-motion';
 import last from "../asset/last.png";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -16,11 +17,13 @@ const Header = () => {
               <br />
               {/* contribute to open source in the same time. */}
             </p>
-            <Link to="/Authentication">
-              <button className="rounded-md bg-blue-500 hover:bg-blue-700 py-2 px-4 mx-8 text-white">
+            <motion.div whileHover={{ scale: 1.1 }}>
+              <Link to="/Authentication">
+                <button className="rounded-md bg-blue-500 hover:bg-blue-700 py-2 px-4 mx-8 text-white">
                   Sign In
-              </button>
-            </Link>
+                </button>
+              </Link>
+            </motion.div>
           </div>
           <img src={last} alt="header" />
         </div>
