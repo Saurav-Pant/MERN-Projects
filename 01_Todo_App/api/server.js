@@ -22,7 +22,6 @@ const Todo = require("./models/Todo");
 
 app.get("/todos", async (req, res) => {
   const todos = await Todo.find();
-
   res.json(todos);
 });
 
@@ -60,4 +59,6 @@ app.get("/todo/update/:id", async (req, res) => {
   res.json(todo);
 });
 
-app.listen(3001);
+app.listen(3001, () => {
+  console.log("Server is running on port 3001");
+});

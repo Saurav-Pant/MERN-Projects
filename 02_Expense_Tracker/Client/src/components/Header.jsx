@@ -14,7 +14,7 @@ const Header = () => {
             <p className="text-base sm:text-base md:text-2xl opacity-60 dark:opacity-80 mb-2 md:mb-4">
               A website where you can keep track of your Expenses
               <br />
-              contribute to open source in the same time.
+              {/* contribute to open source in the same time. */}
             </p>
             <Link to="/Authentication">
               <button className="rounded-md bg-blue-500 hover:bg-blue-700 py-2 px-4 mx-8 text-white">
