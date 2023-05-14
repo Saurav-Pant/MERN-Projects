@@ -17,7 +17,10 @@ const Header = () => {
               <br />
               {/* contribute to open source in the same time. */}
             </p>
-            <motion.div whileHover={{ scale: 1.1 }}>
+            <motion.div whileHover={{
+               scale: 1.1,
+                transition: { duration: 0.5 },                           
+            }}>
               <Link to="/Authentication">
                 <button className="rounded-md bg-blue-500 hover:bg-blue-700 py-2 px-4 mx-8 text-white">
                   Sign In
