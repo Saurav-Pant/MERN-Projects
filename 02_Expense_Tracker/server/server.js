@@ -5,10 +5,18 @@ const cors = require("cors");
 const passport = require("passport");
 require("./passport");
 const session = require("express-session");
+const expenseRouter = require("./router/routers");
 
 const app = express();
 app.use(express.json()); // For parsing application/json (middleware)
-app.use(cors()); // For CORS (middleware)
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    credentials: true,
+  })
+); // For CORS (middleware)
+
 app.use(
   session({
     secret: "sauravpant",
@@ -16,6 +24,7 @@ app.use(
     saveUninitialized: false,
   })
 );
+app.use("/auth", expenseRouter);
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -32,8 +41,6 @@ mongoose
   });
 
 // Routes
-const expenseRouter = require("./router/routers");
-app.use("/auth", expenseRouter);
 
 app.listen(process.env.PORT || 3001, () => {
   console.log("Server is running...");

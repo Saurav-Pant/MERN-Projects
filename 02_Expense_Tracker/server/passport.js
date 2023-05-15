@@ -19,6 +19,7 @@ passport.use(
         lastName: profile.name.familyName,
         image: profile.photos[0].value,
       };
+      console.log(profile);
 
       try {
         // find the user
