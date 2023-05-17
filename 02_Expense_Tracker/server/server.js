@@ -2,13 +2,23 @@ require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const session = require("express-session");
 const passport = require("passport");
 require("./passport");
-const session = require("express-session");
 const expenseRouter = require("./router/routers");
 
 const app = express();
 app.use(express.json()); // For parsing application/json (middleware)
+
+// Session middleware
+app.use(
+  session({
+    secret: "sauravpant",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -17,16 +27,11 @@ app.use(
   })
 ); // For CORS (middleware)
 
-app.use(
-  session({
-    secret: "sauravpant",
-    resave: false,
-    saveUninitialized: false,
-  })
-);
-app.use("/auth", expenseRouter);
+// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+app.use("/auth", expenseRouter);
 
 mongoose
   .connect("mongodb://127.0.0.1/expense-tracker", {
