@@ -6,6 +6,7 @@ const session = require("express-session");
 const passport = require("passport");
 require("./passport");
 const expenseRouter = require("./router/routers");
+const createRoute = require("./router/createRoute");
 
 const app = express();
 app.use(express.json()); // For parsing application/json (middleware)
@@ -31,7 +32,10 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use("/auth", expenseRouter);
+app.use("/auth", expenseRouter); // Route for authentication
+
+// Create expense record route
+app.use("/api/records", createRoute); // Route for expense records
 
 mongoose
   .connect("mongodb://127.0.0.1/expense-tracker", {
@@ -45,8 +49,7 @@ mongoose
     console.log(err);
   });
 
-// Routes
-
+// Start the server
 app.listen(process.env.PORT || 3001, () => {
   console.log("Server is running...");
 });
