@@ -7,6 +7,7 @@ const passport = require("passport");
 require("./passport");
 const expenseRouter = require("./router/routers");
 const createRoute = require("./router/createRoute");
+const editRoute = require("./router/editRoute");
 
 const app = express();
 app.use(express.json()); // For parsing application/json (middleware)
@@ -36,6 +37,8 @@ app.use("/auth", expenseRouter); // Route for authentication
 
 // Create expense record route
 app.use("/api/records", createRoute); // Route for expense records
+
+app.use("/edit", editRoute); // Route for edit
 
 mongoose
   .connect("mongodb://127.0.0.1/expense-tracker", {

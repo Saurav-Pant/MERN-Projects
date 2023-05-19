@@ -7,9 +7,11 @@ import Authentication from "./pages/Authentication";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Create from "./components/Create";
+import EditExpense from "./components/editExpense"; // Update the import statement
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
+
   return (
     <div
       style={{
@@ -22,8 +24,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route exact path="/authentication" element={<Authentication />} />
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/create" element={<Create />} />{" "}
-        {/* Create component is used here */}
+        <Route path="/create" element={<Create />} />
+        <Route exact path="/editExpense/:id" element={<EditExpense />} /> //
       </Routes>
       <Footer />
     </div>
