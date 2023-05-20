@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import { motion } from "framer-motion";
 import "react-datepicker/dist/react-datepicker.css";
@@ -44,7 +44,7 @@ const EditExpense = () => {
       if (response.ok) {
         // Expense updated successfully
         console.log("Expense updated");
-        navigate("/dashboard"); // Navigate to the dashboard page
+        navigate("/dashboard", { state: { saved: true } }); // Navigate to the dashboard page with the saved state
       } else {
         // Failed to update the expense
         console.log("Failed to update the expense");
@@ -62,7 +62,7 @@ const EditExpense = () => {
       if (response.ok) {
         // Expense deleted successfully
         console.log("Expense deleted");
-        navigate("/dashboard"); // Navigate to the dashboard page
+        navigate("/dashboard", { state: { deleted: true } }); // Navigate to the dashboard page with the deleted state
       } else {
         // Failed to delete the expense
         console.log("Failed to delete the expense");
@@ -86,7 +86,7 @@ const EditExpense = () => {
       >
         <form onSubmit={handleUpdate}>
           <div className="space-y-4">
-            <div className="flex flex-col " >
+            <div className="flex flex-col">
               <label className="text-gray-600">Title:</label>
               <input
                 type="text"
@@ -128,19 +128,33 @@ const EditExpense = () => {
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-blue-500 text-white py-2 px-4 rounded-md shadow-lg focus:outline-none"
+              className="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-gray-100 border border-gray-100 rounded-lg shadow-inner group"
               type="submit"
             >
-              Save
+              <span className="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
+              <span className="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
+              <span className="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+              <span className="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+              <span className="absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-900 opacity-0 group-hover:opacity-100"></span>
+              <span className="relative transition-colors duration-300 delay-200 group-hover:text-white ease">
+                Save
+              </span>
             </motion.button>
 
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="bg-red-500 text-white py-2 px-4 rounded-md shadow-lg focus:outline-none ml-44"
+              className="relative px-5 py-3 overflow-hidden font-medium text-gray-600 bg-gray-100 border border-gray-100 rounded-lg shadow-inner group ml-36"
               onClick={handleDelete}
             >
-              Delete
+              <span className="absolute top-0 left-0 w-0 h-0 transition-all duration-200 border-t-2 border-gray-600 group-hover:w-full ease"></span>
+              <span className="absolute bottom-0 right-0 w-0 h-0 transition-all duration-200 border-b-2 border-gray-600 group-hover:w-full ease"></span>
+              <span className="absolute top-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+              <span className="absolute bottom-0 left-0 w-full h-0 transition-all duration-300 delay-200 bg-gray-600 group-hover:h-full ease"></span>
+              <span className="absolute inset-0 w-full h-full duration-300 delay-300 bg-gray-900 opacity-0 group-hover:opacity-100"></span>
+              <span className="relative transition-colors duration-300 delay-200 group-hover:text-white ease">
+                Delete
+              </span>
             </motion.button>
           </div>
         </form>

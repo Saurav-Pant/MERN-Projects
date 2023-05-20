@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import AddButton from "./Add_Button";
 import { format } from "date-fns";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
   const [hoverEffect, setHoverEffect] = useState(false);
+  const location = useLocation();
+  const saved = location.state && location.state.saved;
+  const deleted = location.state && location.state.deleted;
 
   useEffect(() => {
     // Fetch data from the backend API
@@ -28,6 +31,31 @@ const Dashboard = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    if (saved) {
+      const timeout = setTimeout(() => {
+        location.state.saved = false;
+      }, 1500);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [saved]);
+
+  useEffect(() => {
+    if (deleted) {
+      const timeout = setTimeout(() => {
+        location.state.deleted = false;
+      }, 1500);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [deleted]);
+
+  useEffect(() => {
+    localStorage.setItem("saved", saved);
+    localStorage.setItem("deleted", deleted);
+  }, [saved, deleted]);
 
   return (
     <div className="h-screen flex items-center justify-center">
@@ -88,6 +116,35 @@ const Dashboard = () => {
         </motion.div>
         <AddButton />
       </div>
+      {saved && (
+        <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 mb-4">
+          <motion.div
+            className="bg-gradient-to-r from-yellow-300 via-yellow-400 to-yellow-500 rounded-lg shadow-lg p-4 w-96"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1, delay: 0.5, easing: "ease-in-out" }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="text-gray-900 text-lg text-center">
+              Expense saved successfully! 🎉
+            </p>
+          </motion.div>
+        </div>
+      )}
+
+      {deleted && (
+        <div className="fixed bottom-10 left-1/2 transform -translate-x-1/2 mb-4">
+          <motion.div
+            className="bg-gradient-to-r from-green-300 via-green-400 to-green-500 rounded-lg shadow-lg p-4 w-96"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1, delay: 0.5, easing: "ease-in-out" }}
+            transition={{ duration: 0.5 }}
+          >
+            <p className="text-white text-lg text-center">
+            Expense Deleted successfully!
+            </p>
+          </motion.div>
+        </div>
+      )}
     </div>
   );
 };

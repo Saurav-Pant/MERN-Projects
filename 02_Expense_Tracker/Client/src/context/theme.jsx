@@ -4,33 +4,32 @@ const ThemeContext = createContext("light")
 
 const lightTheme = {
   mode: "light",
-  background: "#f5f6fa",
-  color: "#000",
+  background: "#F8F9FA", // Light gray
+  color: "#333333", // Dark gray
   icon: "☀️",
   button: {
-    buttonBgColor: "#000",
-    buttonTextColor: "#fff",
+    buttonBgColor: "#6B46C1", // Purple
+    buttonTextColor: "#FFFFFF", // White
   },
   navbar: {
-    background: "#fff",
-    color: "#000",
+    background: "#FFFFFF", // White
+    color: "#333333", // Dark gray
   },
-}
-
+};
 const darkTheme = {
   mode: "dark",
-  background: "#000",
-  color: "#fff",
+  background: "#1F2937", // Dark blueish-gray
+  color: "#FFFFFF", // White
   icon: "🌜",
   button: {
-    buttonBgColor: "#fff",
-    buttonTextColor: "#000",
+    buttonBgColor: "#D97706", // Dark orange
+    buttonTextColor: "#FFFFFF", // White
   },
   navbar: {
-    background: "#111827",
-    color: "#fff",
+    background: "#4B5563", // Dark gray
+    color: "#FFFFFF", // White
   },
-}
+};
 
 const ThemeProvider = ({ children }) => {
   const [theme, setTheme] = useState(lightTheme)
