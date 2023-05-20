@@ -59,6 +59,16 @@ const Dashboard = () => {
 
   return (
     <div className="h-screen flex items-center justify-center">
+
+       {/* Filter with a filter function to show this month expenses */}
+
+       
+
+
+
+
+
+
       <div className="absolute top-28 container mx-auto p-4">
         <motion.div
           className="flex flex-wrap"
