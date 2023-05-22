@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Create from "./components/Create";
 import EditExpense from "./components/editExpense"; // Update the import statement
+import Login from "./components/Login";
+import Signup from "./components/SignUp";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -25,6 +27,8 @@ const App = () => {
         <Route exact path="/authentication" element={<Authentication />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/create" element={<Create />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/Signup" element={<Signup />} />
         <Route exact path="/editExpense/:id" element={<EditExpense />} /> //
       </Routes>
       <Footer />

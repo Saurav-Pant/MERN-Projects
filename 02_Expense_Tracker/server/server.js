@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const session = require("express-session");
 const passport = require("passport");
-require("./passport");
+// require("./passport");
 const expenseRouter = require("./router/routers");
 const createRoute = require("./router/createRoute");
 const editRoute = require("./router/editRoute");
+const LoginRoute = require("./router/Login");
 
 const app = express();
 app.use(express.json()); // For parsing application/json (middleware)
@@ -15,7 +16,7 @@ app.use(express.json()); // For parsing application/json (middleware)
 // Session middleware
 app.use(
   session({
-    secret: "sauravpant",
+    secret: "sauravpant123",
     resave: false,
     saveUninitialized: false,
   })
@@ -39,6 +40,8 @@ app.use("/auth", expenseRouter); // Route for authentication
 app.use("/api/records", createRoute); // Route for expense records
 
 app.use("/edit", editRoute); // Route for edit
+
+app.use("/api/auth", LoginRoute); // Route for login
 
 mongoose
   .connect("mongodb://127.0.0.1/expense-tracker", {
