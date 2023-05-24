@@ -46,7 +46,7 @@ const Create = () => {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="flex items-center justify-center h-[85vh]">
       <motion.div
         className="bg-white rounded-lg shadow-lg p-8 w-96"
         initial={{ scale: 0 }}

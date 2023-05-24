@@ -38,9 +38,9 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
+    <div className="flex justify-center items-center h-[85vh] ">
       <motion.form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 "
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -102,10 +102,10 @@ const Signup = () => {
             Sign Up
           </button>
         </div>
-        <div className="inline-block  font-bold text-sm text-blue-500 ">
+        <div className="inline-block  font-bold text-sm text-blue-500 mt-8 ">
           Already have an account?
           <Link to="/login">
-            <span className="cursor-pointer underline hover:text-blue-800 "> Login</span>
+            <span className="cursor-pointer underline hover:text-blue-800 pl-3"> Login</span>
           </Link>
         </div>
       </motion.form>
