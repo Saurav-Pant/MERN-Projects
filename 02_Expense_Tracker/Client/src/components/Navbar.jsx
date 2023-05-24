@@ -5,9 +5,6 @@ import {motion} from 'framer-motion'
 
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const { navbar } = theme;
-  console.log(theme)
-  console.log(navbar)
   return (
     <>
       <div

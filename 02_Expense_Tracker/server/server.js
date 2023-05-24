@@ -10,6 +10,7 @@ const createRoute = require("./router/createRoute");
 const editRoute = require("./router/editRoute");
 const SignupRoute = require("./router/SignUp");
 const LoginRoute = require("./router/Login");
+const ProfileRoute = require("./router/profile");
 
 const app = express();
 app.use(express.json()); // For parsing application/json (middleware)
@@ -45,6 +46,8 @@ app.use("/edit", editRoute); // Route for edit
 app.use("/SignUp", SignupRoute); // Route for Signup
 
 app.use("/Login", LoginRoute); // Route for Login
+
+app.use("/profile", ProfileRoute); // Route for Profile
 
 mongoose
   .connect("mongodb://127.0.0.1/expense-tracker", {

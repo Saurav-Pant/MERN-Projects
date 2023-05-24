@@ -89,6 +89,7 @@ const Dashboard = () => {
                   pathname: `/editExpense/${record._id}`,
                   state: { record },
                 }}
+                  key={record._id} // Add a unique key prop
               >
                 <motion.div
                   key={record._id}
