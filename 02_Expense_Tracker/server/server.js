@@ -13,6 +13,7 @@ const LoginRoute = require("./router/Login");
 const ProfileRoute = require("./router/profile");
 
 const app = express();
+const MONGO_URI = process.env.LOCAL_MONGO_URL;
 app.use(express.json()); // For parsing application/json (middleware)
 
 // Session middleware
@@ -50,7 +51,7 @@ app.use("/Login", LoginRoute); // Route for Login
 app.use("/profile", ProfileRoute); // Route for Profile
 
 mongoose
-  .connect("mongodb://127.0.0.1/expense-tracker", {
+  .connect(MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
