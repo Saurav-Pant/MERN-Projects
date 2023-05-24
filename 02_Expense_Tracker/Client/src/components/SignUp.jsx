@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import { motion } from 'framer-motion';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { motion } from "framer-motion";
+import axios from "axios";
+import { useNavigate, Link } from "react-router-dom";
 
 const Signup = () => {
   const navigate = useNavigate();
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -23,16 +23,19 @@ const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-  
+
     try {
-      const res = await axios.post('http://localhost:3001/api/auth/signup', { name, email, password });
+      const res = await axios.post("http://localhost:3001/signup/signup", {
+        name,
+        email,
+        password,
+      });
       console.log(res.data); // Handle success response
-      navigate('/dashboard'); // Redirect to the dashboard
+      navigate("/dashboard"); // Redirect to the dashboard
     } catch (err) {
       console.error(err.response.data); // Handle error response
     }
   };
-  
 
   return (
     <div className="flex justify-center items-center h-screen">
@@ -44,7 +47,10 @@ const Signup = () => {
         onSubmit={handleSignup}
       >
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="name"
+          >
             Name
           </label>
           <input
@@ -57,7 +63,10 @@ const Signup = () => {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="email">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="email"
+          >
             Email
           </label>
           <input
@@ -70,7 +79,10 @@ const Signup = () => {
           />
         </div>
         <div className="mb-6">
-          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="password">
+          <label
+            className="block text-gray-700 text-sm font-bold mb-2"
+            htmlFor="password"
+          >
             Password
           </label>
           <input
@@ -89,6 +101,12 @@ const Signup = () => {
           >
             Sign Up
           </button>
+        </div>
+        <div className="inline-block  font-bold text-sm text-blue-500 ">
+          Already have an account?
+          <Link to="/login">
+            <span className="cursor-pointer underline hover:text-blue-800 "> Login</span>
+          </Link>
         </div>
       </motion.form>
     </div>

@@ -62,11 +62,6 @@ const Dashboard = () => {
 
        {/* Filter with a filter function to show this month expenses */}
 
-       
-
-
-
-
 
 
       <div className="absolute top-28 container mx-auto p-4">
@@ -97,9 +92,13 @@ const Dashboard = () => {
               >
                 <motion.div
                   key={record._id}
-                  className="rounded-lg shadow-md p-4 mb-4 mr-4 relative w-56 h-40 bg-gradient-to-r from-purple-400 to-pink-500 transform transition duration-300 ease-in-out"
-                  whileHover={{ scale: 1.05 }}
+                  className="rounded-lg shadow-md p-4 mb-4 mr-4 relative w-56 h-40 bg-gradient-to-r from-cyan-500 to-cyan-400 dark:from-blue-700 dark:to-blue-500 transform transition duration-300 ease-in-out"
                   whileTap={{ scale: 0.95 }}
+                  whileHover={
+                    {
+                      boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.25)",
+                    }
+                  }
                   style={{
                     perspective: "500px",
                     transformStyle: "preserve-3d",

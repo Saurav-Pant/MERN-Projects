@@ -18,7 +18,7 @@ const lightTheme = {
 };
 const darkTheme = {
   mode: "dark",
-  background: "#1F2937", // Dark blueish-gray
+  background: "#000000", // Black
   color: "#FFFFFF", // White
   icon: "🌜",
   button: {

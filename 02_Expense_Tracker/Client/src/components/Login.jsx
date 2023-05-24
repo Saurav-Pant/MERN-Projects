@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -18,13 +20,13 @@ const Login = () => {
     e.preventDefault();
 
     try {
-      const res = await axios.post('http://localhost:3001/api/auth/login', { email, password });
+      const res = await axios.post('http://localhost:3001/login/login', { email, password });
       console.log(res.data); // Handle success response
+      navigate('/dashboard'); // Redirect to the dashboard
     } catch (err) {
       console.error(err.response.data); // Handle error response
     }
   };
-
 
   return (
     <div className="flex justify-center items-center h-screen">
