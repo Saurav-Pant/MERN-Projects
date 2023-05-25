@@ -91,7 +91,10 @@ const EditExpense = () => {
               <label className="text-gray-600">Title:</label>
               <input
                 type="text"
-                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-teal-400"
+                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500
+                text-amber-950
+
+                 "
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
               />
@@ -101,7 +104,10 @@ const EditExpense = () => {
               <label className="text-gray-600">Amount:</label>
               <input
                 type="number"
-                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-teal-400"
+                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500
+                text-amber-950
+
+                 "
                 value={amount}
                 onChange={(e) => setAmount(e.target.value)}
               />
@@ -112,14 +118,19 @@ const EditExpense = () => {
               <DatePicker
                 selected={selectedDate}
                 onChange={(date) => setSelectedDate(date)}
-                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 text-teal-400"
+                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500
+                text-amber-950
+                 "
               />
             </div>
 
             <div className="flex flex-col">
               <label className="text-gray-600">Description:</label>
               <textarea
-                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none text-teal-400"
+                className="border border-gray-300 rounded-md px-4 py-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none
+                text-amber-950
+
+                 "
                 rows="4"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
