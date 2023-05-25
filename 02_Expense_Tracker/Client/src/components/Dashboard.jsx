@@ -6,6 +6,7 @@ import { Link, useLocation } from "react-router-dom";
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
   const [hoverEffect, setHoverEffect] = useState(false);
   const location = useLocation();
   const saved = location.state && location.state.saved;
@@ -15,7 +16,10 @@ const Dashboard = () => {
     // Fetch data from the backend API
     fetch("http://localhost:3001/api/records/create")
       .then((response) => response.json())
-      .then((data) => setData(data))
+      .then((data) => {
+        setData(data);
+        setFilteredData(data);
+      })
       .catch((error) => console.log("Error:", error));
   }, []);
 
@@ -57,21 +61,85 @@ const Dashboard = () => {
     localStorage.setItem("deleted", deleted);
   }, [saved, deleted]);
 
+  // Filter data by date and amount
+  const filterData = (startDate, endDate, minAmount, maxAmount) => {
+    const filteredExpenses = data.filter((expense) => {
+      const expenseDate = new Date(expense.date);
+      const expenseAmount = expense.amount;
+
+      return (
+        expenseDate >= startDate &&
+        expenseDate <= endDate &&
+        expenseAmount >= minAmount &&
+        expenseAmount <= maxAmount
+      );
+    });
+
+    setFilteredData(filteredExpenses);
+  };
+
   return (
     <div className="h-screen flex items-center justify-center">
+      {/* Filter section */}
+      <div className="absolute top-28 left-10">
+        <div className="">
+          <label
+            htmlFor=""
+            className="text-lg font-bold mb-2 pr-4"
+          >
+            Search With Date
+          </label>
+          <input
+            type="date"
+            onChange={(e) => {
+              const startDate = new Date(e.target.value);
+              const endDate = new Date();
+              const minAmount = 0;
+              const maxAmount = Infinity;
+              filterData(startDate, endDate, minAmount, maxAmount);
+            }}
+            className="px-4 py-2 rounded-md border border-gray-300 text-gray-700 bg-white focus:outline-none focus:border-blue-500"
+          />
+        </div>
+        <label htmlFor="" className="text-lg font-bold mb-2">
+          Filter With Amount
+        </label>
+        <div className="mt-2">
+          <input
+            type="number"
+            placeholder="Min Amount"
+            onChange={(e) => {
+              const startDate = new Date("1900-01-01");
+              const endDate = new Date();
+              const minAmount = Number(e.target.value);
+              const maxAmount = Infinity;
+              filterData(startDate, endDate, minAmount, maxAmount);
+            }}
+            className="px-4 py-2 rounded border border-gray-300 text-gray-700 bg-white focus:outline-none focus:border-blue-500 mr-2"
+          />
+          <input
+            type="number"
+            placeholder="Max Amount"
+            onChange={(e) => {
+              const startDate = new Date("1900-01-01");
+              const endDate = new Date();
+              const minAmount = 0;
+              const maxAmount = Number(e.target.value);
+              filterData(startDate, endDate, minAmount, maxAmount);
+            }}
+            className="px-4 py-2 rounded border border-gray-300 text-gray-700 bg-white focus:outline-none focus:border-blue-500"
+          />
+        </div>
+      </div>
 
-       {/* Filter with a filter function to show this month expenses */}
-
-
-
-      <div className="absolute top-28 container mx-auto p-4">
+      <div className="container mx-auto p-4">
         <motion.div
-          className="flex flex-wrap"
+          className="flex flex-wrap justify-center"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.5 }}
         >
-          {data.length === 0 ? (
+          {filteredData.length === 0 ? (
             <div className="text-center text-gray-500 m-auto pt-64">
               <h1 className="text-6xl uppercase relative text-gray-300">
                 <span className={`${hoverEffect ? "text-gray-400" : ""}`}>
@@ -83,23 +151,21 @@ const Dashboard = () => {
               </h1>
             </div>
           ) : (
-            data.map((record) => (
+            filteredData.map((record) => (
               <Link
                 to={{
                   pathname: `/editExpense/${record._id}`,
                   state: { record },
                 }}
-                  key={record._id} // Add a unique key prop
+                key={record._id}
               >
                 <motion.div
                   key={record._id}
                   className="rounded-lg shadow-md p-4 mb-4 mr-4 relative w-56 h-40 bg-gradient-to-r from-cyan-500 to-cyan-400 dark:from-blue-700 dark:to-blue-500 transform transition duration-300 ease-in-out"
                   whileTap={{ scale: 0.95 }}
-                  whileHover={
-                    {
-                      boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.25)",
-                    }
-                  }
+                  whileHover={{
+                    boxShadow: "0px 0px 10px rgba(0, 0, 0, 0.25)",
+                  }}
                   style={{
                     perspective: "500px",
                     transformStyle: "preserve-3d",
@@ -150,7 +216,7 @@ const Dashboard = () => {
             transition={{ duration: 0.5 }}
           >
             <p className="text-white text-lg text-center">
-            Expense Deleted successfully!
+              Expense Deleted successfully!
             </p>
           </motion.div>
         </div>
