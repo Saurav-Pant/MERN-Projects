@@ -79,7 +79,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center">
+    <div className="h-[85vh] flex items-center justify-center">
       {/* Filter section */}
       <div className="absolute top-28 left-10">
         <div className="">
@@ -140,7 +140,7 @@ const Dashboard = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
         >
           {filteredData.length === 0 ? (
-            <div className="text-center text-gray-500 m-auto pt-64">
+            <div className="text-center text-gray-500 m-auto ">
               <h1 className="text-6xl uppercase relative text-gray-300">
                 <span className={`${hoverEffect ? "text-gray-400" : ""}`}>
                   No expenses found.
