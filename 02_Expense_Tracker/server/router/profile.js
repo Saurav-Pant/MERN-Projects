@@ -3,11 +3,10 @@ const User = require("../models/User");
 
 const router = express.Router();
 
-router.get("/profile", async (req, res) => {
+router.get("/login", async (req, res) => {
   try {
     // Get the authenticated user's ID from the request
     const userId = req.user.id;
-
     // Fetch the user profile data from the database
     const user = await User.findById(userId);
 
