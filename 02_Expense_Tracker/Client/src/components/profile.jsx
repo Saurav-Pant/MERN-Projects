@@ -4,6 +4,7 @@ const Profile = () => {
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
 
+
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
     setImage(URL.createObjectURL(selectedImage));
@@ -17,12 +18,29 @@ const Profile = () => {
     document.getElementById("imageUpload").click();
   };
 
-  const handleSave = (e) => {
+  const handleSave = async (e) => {
     e.preventDefault();
-    // Perform save logic with the selected image and name
-    console.log("Saved:", image, name);
+  
+    try {
+      const response = await fetch('/api/profile', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ image, name }),
+      });
+  
+      if (!response.ok) {
+        throw new Error('Failed to save profile');
+      }
+  
+      const data = await response.json();
+      console.log('Saved:', data);
+    } catch (error) {
+      console.error(error);
+    }
   };
-
+  
   return (
     <div className="container mx-auto h-[80vh]">
       <form onSubmit={handleSave}>
