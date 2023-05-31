@@ -22,7 +22,7 @@ const Profile = () => {
     e.preventDefault();
   
     try {
-      const response = await fetch('/api/profile', {
+      const response = await fetch("http://localhost:3001/api/profile", {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

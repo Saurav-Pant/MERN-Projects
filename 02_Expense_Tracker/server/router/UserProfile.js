@@ -1,12 +1,12 @@
 const express = require("express");
 const router = express.Router();
 
-const UserProfile = require("../models/UserProfile");
+const User = require("../models/UserProfile");
 
 router.post("/profile", async (req, res) => {
   try {
     const { image, name } = req.body;
-    const newProfile = new UserProfile({
+    const newProfile = new User({
       image,
       name,
     });
@@ -19,7 +19,7 @@ router.post("/profile", async (req, res) => {
 
 router.get("/profile", async (req, res) => {
   try {
-    const profile = await UserProfile.find();
+    const profile = await User.find();
     res.status(200).json(profile);
   } catch (error) {
     res.status(500).json({ error: "Failed to fetch profile." });

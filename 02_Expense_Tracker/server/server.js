@@ -14,9 +14,9 @@ const ProfileRoute = require("./router/UserProfile");
 
 const app = express();
 const MONGO_URI = process.env.LOCAL_MONGO_URL;
+
 app.use(express.json()); // For parsing application/json (middleware)
 
-// Session middleware
 app.use(
   session({
     secret: "sauravpant123",
@@ -33,9 +33,10 @@ app.use(
   })
 ); // For CORS (middleware)
 
-// Passport middleware
 app.use(passport.initialize());
 app.use(passport.session());
+
+// Rest of the code...
 
 app.use("/auth", expenseRouter); // Route for authentication
 
