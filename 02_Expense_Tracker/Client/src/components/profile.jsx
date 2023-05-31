@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Profile = () => {
   const [image, setImage] = useState(null);
   const [name, setName] = useState("");
-
+  const navigate=useNavigate();
 
   const handleImageChange = (e) => {
     const selectedImage = e.target.files[0];
@@ -20,27 +21,28 @@ const Profile = () => {
 
   const handleSave = async (e) => {
     e.preventDefault();
-  
+
     try {
       const response = await fetch("http://localhost:3001/api/profile", {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ image, name }),
       });
-  
+
       if (!response.ok) {
-        throw new Error('Failed to save profile');
+        throw new Error("Failed to save profile");
+      } else {
+        const data = await response.json();
+        console.log("Saved:", data);
+        navigate("/dashboard")
       }
-  
-      const data = await response.json();
-      console.log('Saved:', data);
     } catch (error) {
       console.error(error);
     }
   };
-  
+
   return (
     <div className="container mx-auto h-[80vh]">
       <form onSubmit={handleSave}>

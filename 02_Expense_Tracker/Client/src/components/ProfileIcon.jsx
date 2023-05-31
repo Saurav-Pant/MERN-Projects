@@ -6,9 +6,14 @@ const ProfileIcon = () => {
   return (
     <div>
       <div className="flex justify-center items-center pl-10">
-        <Link to="/profile">
+        <Link to="/profile">{
+
+          
           <CgProfile size={40} />
-        </Link>
+
+
+          
+          }</Link>
       </div>
     </div>
   );
