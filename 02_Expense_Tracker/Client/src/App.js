@@ -10,6 +10,7 @@ import Create from "./components/Create";
 import EditExpense from "./components/editExpense"; // Update the import statement
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
+import Profile from "./components/Profile";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -29,7 +30,8 @@ const App = () => {
         <Route path="/create" element={<Create />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
-        <Route exact path="/editExpense/:id" element={<EditExpense />} /> //
+        <Route exact path="/editExpense/:id" element={<EditExpense />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       <Footer />
     </div>

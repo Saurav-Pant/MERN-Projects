@@ -1,21 +1,16 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../context/theme";
-import {motion} from 'framer-motion'
+import { motion } from "framer-motion";
+import Profile from "./ProfileIcon";
+import { useLocation } from "react-router-dom";
 
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
+  const location = useLocation();
   return (
     <>
-      <div
-        // className="fixed top-0 left-0 right-0 z-50 "
-        className=""
-        // style={{
-        //   background: navbar.background,
-        //   color: navbar.color,
-        //   boxShadow: "0 5px 24px rgba(0, 0, 0, .25)",
-        // }}
-      >
+      <div>
         <div className="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center">
             <Link to="/">
@@ -30,8 +25,9 @@ const Header = () => {
                 <br /> <span className="text-2xl pl-3">Tracker</span>
               </h1>
             </Link>
-          </div>
-          <div>
+          </div>        
+          <div className="flex justify-center items-center">
+            <div>
             <motion.button
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -40,6 +36,10 @@ const Header = () => {
             >
               {theme.icon}
             </motion.button>
+            </div>
+            <div className="">
+            {location.pathname === "/dashboard" ? <Profile /> : null}
+          </div>
           </div>
         </div>
       </div>
