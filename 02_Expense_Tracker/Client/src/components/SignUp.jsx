@@ -2,12 +2,14 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import { CgProfile } from "react-icons/cg";
 
 const Signup = () => {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -37,6 +39,10 @@ const Signup = () => {
     }
   };
 
+  const handleFileChange = (event) => {
+    setSelectedFile(event.target.files[0]);
+  };
+
   return (
     <div className="flex justify-center items-center h-[85vh] ">
       <motion.form
@@ -45,7 +51,38 @@ const Signup = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         onSubmit={handleSignup}
-      >z
+      >
+
+        {/* Profile Section */}
+        
+        <div className="flex justify-center items-center">
+          <label htmlFor="upload-input">
+            <div
+              className={`h-32 w-32 rounded-full flex items-center justify-center text-white cursor-pointer ${
+                selectedFile ? "" : "bg-red-500"
+              }`}
+            >
+              {selectedFile ? (
+                // Display the selected image or icon
+                <img
+                  src={URL.createObjectURL(selectedFile)}
+                  alt="Selected Image"
+                  className="h-32 w-32 rounded-full"
+                />
+              ) : (
+                // Display the red background and CgProfile icon
+                <CgProfile className="h-24 w-24" />
+              )}
+            </div>
+          </label>
+          <input
+            id="upload-input"
+            type="file"
+            className="hidden"
+            onChange={handleFileChange}
+          />
+        </div>
+
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
@@ -105,7 +142,10 @@ const Signup = () => {
         <div className="inline-block  font-bold text-sm text-blue-500 mt-8 ">
           Already have an account?
           <Link to="/login">
-            <span className="cursor-pointer underline hover:text-blue-800 pl-3"> Login</span>
+            <span className="cursor-pointer underline hover:text-blue-800 pl-3">
+              {" "}
+              Login
+            </span>
           </Link>
         </div>
       </motion.form>
