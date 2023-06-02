@@ -9,7 +9,7 @@ const Signup = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [selectedFile, setSelectedFile] = useState(null);
+  const [profile, setProfile] = useState(null);
 
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -28,6 +28,7 @@ const Signup = () => {
 
     try {
       const res = await axios.post("http://localhost:3001/signup/signup", {
+        profile,
         name,
         email,
         password,
@@ -40,7 +41,7 @@ const Signup = () => {
   };
 
   const handleFileChange = (event) => {
-    setSelectedFile(event.target.files[0]);
+    setProfile(event.target.files[0]);
   };
 
   return (
@@ -54,18 +55,18 @@ const Signup = () => {
       >
 
         {/* Profile Section */}
-        
+
         <div className="flex justify-center items-center">
           <label htmlFor="upload-input">
             <div
               className={`h-32 w-32 rounded-full flex items-center justify-center text-white cursor-pointer ${
-                selectedFile ? "" : "bg-red-500"
+                profile ? "" : "bg-red-500"
               }`}
             >
-              {selectedFile ? (
+              {profile ? (
                 // Display the selected image or icon
                 <img
-                  src={URL.createObjectURL(selectedFile)}
+                  src={URL.createObjectURL(profile)}
                   alt="Selected Image"
                   className="h-32 w-32 rounded-full"
                 />
