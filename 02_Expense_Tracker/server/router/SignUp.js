@@ -34,6 +34,7 @@ router.post(
       }
 
       user = new User({
+        profile,
         name,
         email,
         password,
