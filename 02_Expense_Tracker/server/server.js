@@ -11,6 +11,7 @@ const editRoute = require("./router/editRoute");
 const SignupRoute = require("./router/SignUp");
 const LoginRoute = require("./router/Login");
 const ProfileRoute = require("./router/UserProfile");
+const ProfilePictureRoute = require("./router/ProfilePicture");
 
 const app = express();
 const MONGO_URI = process.env.LOCAL_MONGO_URL;
@@ -50,6 +51,8 @@ app.use("/SignUp", SignupRoute); // Route for Signup
 app.use("/Login", LoginRoute); // Route for Login
 
 app.use("/api", ProfileRoute); // Route for Profile
+
+app.use("/", ProfilePictureRoute); // Route for Profile Picture
 
 mongoose
   .connect(MONGO_URI, {
