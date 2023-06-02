@@ -15,7 +15,7 @@ const ProfileRoute = require("./router/UserProfile");
 const app = express();
 const MONGO_URI = process.env.LOCAL_MONGO_URL;
 
-app.use(express.json()); // For parsing application/json (middleware)
+app.use(express.json({ limit: "10mb" })); // Increase payload size limit (adjust as needed)
 
 app.use(
   session({

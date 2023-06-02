@@ -27,8 +27,10 @@ const Signup = () => {
     e.preventDefault();
 
     try {
+      const profileImageString = await convertToBase64(profile); // Convert the selected image to base64
+
       const res = await axios.post("http://localhost:3001/signup/signup", {
-        profile,
+        profile: profileImageString,
         name,
         email,
         password,
@@ -38,6 +40,15 @@ const Signup = () => {
     } catch (err) {
       console.error(err.response.data); // Handle error response
     }
+  };
+
+  const convertToBase64 = async (file) => {
+    return new Promise((resolve, reject) => {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => resolve(fileReader.result.split(",")[1]); // Extract the base64 string from the data URL
+      fileReader.onerror = (error) => reject(error);
+    });
   };
 
   const handleFileChange = (event) => {
@@ -53,7 +64,6 @@ const Signup = () => {
         transition={{ duration: 0.5 }}
         onSubmit={handleSignup}
       >
-
         {/* Profile Section */}
 
         <div className="flex justify-center items-center">
@@ -64,7 +74,7 @@ const Signup = () => {
               }`}
             >
               {profile ? (
-                // Display the selected image or icon
+                // Display the selected image
                 <img
                   src={URL.createObjectURL(profile)}
                   alt="Selected Image"
