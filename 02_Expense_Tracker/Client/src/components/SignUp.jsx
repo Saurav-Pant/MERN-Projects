@@ -45,7 +45,7 @@ const Signup = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         onSubmit={handleSignup}
-      >
+      >z
         <div className="mb-4">
           <label
             className="block text-gray-700 text-sm font-bold mb-2"
