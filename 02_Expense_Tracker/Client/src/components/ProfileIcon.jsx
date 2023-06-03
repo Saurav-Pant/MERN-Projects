@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import axios from "axios";
 
+
 const ProfileIcon = () => {
   const [profileImage, setProfileImage] = useState(null);
 
@@ -21,11 +22,12 @@ const ProfileIcon = () => {
 
   const getBase64ImageSource = () => {
     if (profileImage) {
-      return `data:image/jpeg;base64, ${profileImage}`;
-    } else {
-      return null;
+      return `data:image;base64, ${profileImage}`;
     }
+  
+    return null;
   };
+  
 
   return (
     <div>
