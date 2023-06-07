@@ -13,7 +13,7 @@ const LoginRoute = require("./router/Login");
 const app = express();
 const MONGO_URI = process.env.LOCAL_MONGO_URL;
 
-app.use(express.json({ limit: "10mb" })); // Increase payload size limit (adjust as needed)
+app.use(express.json({ limit: "10mb" }));
 
 app.use(
   session({
@@ -29,16 +29,13 @@ app.use(
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     credentials: true,
   })
-); // For CORS (middleware)
+);
 
 app.use(passport.initialize());
 app.use(passport.session());
 
-// Rest of the code...
+app.use("/auth", expenseRouter);
 
-app.use("/auth", expenseRouter); // Route for authentication
-
-// Create expense record route
 app.use("/api/records", createRoute); // Route for expense records
 
 app.use("/edit", editRoute); // Route for edit
