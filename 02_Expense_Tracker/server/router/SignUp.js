@@ -67,24 +67,4 @@ router.post(
   }
 );
 
-router.get("/profile", async (req, res) => {
-  try {
-    // Get the user ID from the request parameters or the request token
-    const userId = req.params.userId || req.user.id;
-
-    // Find the user in the database
-    const user = await User.findById(userId);
-
-    if (!user) {
-      return res.status(404).json({ msg: "User not found" });
-    }
-
-    // Return the user's profile
-    res.json({ profile: user.profile });
-  } catch (err) {
-    console.error(err.message);
-    res.status(500).send("Server Error");
-  }
-});
-
 module.exports = router;
