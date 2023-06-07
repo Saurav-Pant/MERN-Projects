@@ -10,8 +10,6 @@ const createRoute = require("./router/createRoute");
 const editRoute = require("./router/editRoute");
 const SignupRoute = require("./router/SignUp");
 const LoginRoute = require("./router/Login");
-// const ProfileRoute = require("./router/UserProfile");
-
 const app = express();
 const MONGO_URI = process.env.LOCAL_MONGO_URL;
 
@@ -48,8 +46,6 @@ app.use("/edit", editRoute); // Route for edit
 app.use("/SignUp", SignupRoute); // Route for Signup
 
 app.use("/Login", LoginRoute); // Route for Login
-
-// app.use("/api", ProfileRoute); // Route for Profile
 
 mongoose
   .connect(MONGO_URI, {
