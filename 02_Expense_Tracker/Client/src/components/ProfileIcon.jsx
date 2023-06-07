@@ -10,7 +10,7 @@ const ProfileIcon = () => {
   useEffect(() => {
     const fetchProfileImage = async () => {
       try {
-        const response = await axios.get("http://localhost:3001/profile/image");
+        const response = await axios.get("http://localhost:3001/SignUp/profile");
         setProfileImage(response.data.profile);
         console.log(response.data.profile)
       } catch (error) {
