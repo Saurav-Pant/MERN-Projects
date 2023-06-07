@@ -12,6 +12,7 @@ const ProfileIcon = () => {
       try {
         const response = await axios.get("http://localhost:3001/profile/image");
         setProfileImage(response.data.profile);
+        console.log(response.data.profile)
       } catch (error) {
         console.error(error);
       }

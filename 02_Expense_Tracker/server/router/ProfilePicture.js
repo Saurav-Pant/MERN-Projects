@@ -5,7 +5,7 @@ const User = require("../models/User");
 // Get user profile image
 router.get("/profile/image", async (req, res) => {
   try {
-    const user = await User.findById(req.user.id).select("profile");
+    const user = await User.findById(req.user._id).select("profile");
     res.json({ profile: user.profile });
     console.log(user.profile);
   } catch (err) {
