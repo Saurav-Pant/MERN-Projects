@@ -17,6 +17,7 @@ router
       res.status(500).json({ error: "Failed to fetch the expense record." });
     }
   })
+
   // PUT request to update a specific expense record
   .put(async (req, res) => {
     try {
@@ -35,6 +36,7 @@ router
       res.status(500).json({ error: "Failed to update the expense record." });
     }
   })
+
   // DELETE request to delete a specific expense record
   .delete(async (req, res) => {
     try {

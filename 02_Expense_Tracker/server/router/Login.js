@@ -47,7 +47,7 @@ router.post(
         (err, token) => {
           if (err) throw err;
 
-          res.json({ token }); // Send the token as a response instead of redirecting
+          res.json({ token });
         }
       );
     } catch (err) {

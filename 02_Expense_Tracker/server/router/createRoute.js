@@ -4,6 +4,7 @@ const ExpenseRecord = require("../models/ExpenseRecord");
 
 router
   .route("/create")
+
   // POST request to create a new expense record
   .post(async (req, res) => {
     try {
@@ -20,6 +21,7 @@ router
       res.status(500).json({ error: "Failed to save the record." });
     }
   })
+
   // GET request to fetch all expense records
   .get(async (req, res) => {
     try {
