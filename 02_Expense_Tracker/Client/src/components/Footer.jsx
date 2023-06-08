@@ -1,8 +1,6 @@
-import React, { useContext } from "react";
-import { ThemeContext } from "../context/theme";
+import React from "react";
 
 const Footer = () => {
-  const { theme } = useContext(ThemeContext);
   return (
     <div className="flex justify-center min-h-[8vh] items-center">
       <div>
