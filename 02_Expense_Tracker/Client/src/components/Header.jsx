@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   return (
     <div className="flex justify-center ">
-      <div className="w-full max-w-[1536px] h-[92vh] px-4 md:px-8 lg:px-20">
+      <div className="w-full max-w-[1536px]  px-4 md:px-8 lg:px-20">
         <div className="mt-16 md:mt-0 md:h-screen 2xl:h-auto py-16 2xl:py-28 grid md:grid-cols-2 items-center">
           <div className="flex flex-col items-start gap-10">
             <h1 className="text-5xl md:text-[6vw] lg:text-8xl font-black">

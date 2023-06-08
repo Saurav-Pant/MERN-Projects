@@ -56,7 +56,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-[85vh] ">
+    <div className="flex justify-center items-center h-screen">
       <motion.form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 "
         initial={{ opacity: 0, y: -50 }}
