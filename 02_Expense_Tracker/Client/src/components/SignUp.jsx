@@ -23,7 +23,7 @@ const Signup = () => {
     setPassword(e.target.value);
   };
 
-  const handleSignup = async (e) => {
+  const handleSignUp = async (e) => {
     e.preventDefault();
 
     try {
@@ -62,7 +62,7 @@ const Signup = () => {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        onSubmit={handleSignup}
+        onSubmit={handleSignUp}
       >
         {/* Profile Section */}
 
