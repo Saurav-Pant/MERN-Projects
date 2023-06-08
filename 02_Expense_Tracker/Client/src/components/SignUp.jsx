@@ -154,7 +154,6 @@ const Signup = () => {
           Already have an account?
           <Link to="/login">
             <span className="cursor-pointer underline hover:text-blue-800 pl-3">
-              {" "}
               Login
             </span>
           </Link>

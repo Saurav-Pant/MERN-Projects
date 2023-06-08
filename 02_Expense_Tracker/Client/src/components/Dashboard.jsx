@@ -81,7 +81,7 @@ const Dashboard = () => {
   return (
     <div className="h-[85vh] flex items-center justify-center">
       {/* Filter section */}
-      <div className="absolute top-28 left-10">
+      {/* <div className="absolute top-28 left-10">
         <div className="">
           <label
             htmlFor=""
@@ -130,7 +130,7 @@ const Dashboard = () => {
             className="px-4 py-2 rounded border border-gray-300 text-gray-700 bg-white focus:outline-none focus:border-blue-500"
           />
         </div>
-      </div>
+      </div> */}
 
       <div className="container mx-auto p-4">
         <motion.div
@@ -141,7 +141,7 @@ const Dashboard = () => {
         >
           {filteredData.length === 0 ? (
             <div className="text-center text-gray-500 m-auto ">
-              <h1 className="text-6xl uppercase relative text-gray-300">
+              <h1 className="text-6xl uppercase relative text-gray-300 animate-bounce">
                 <span className={`${hoverEffect ? "text-gray-400" : ""}`}>
                   No expenses found.
                 </span>
