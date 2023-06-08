@@ -78,7 +78,7 @@ const EditExpense = () => {
   }
 
   return (
-    <div className="flex items-center justify-center  h-[85vh]">
+    <div className="flex items-center justify-center h-screen">
       <motion.div
         className="bg-white rounded-lg shadow-lg p-8 w-96"
         initial={{ scale: 0 }}
