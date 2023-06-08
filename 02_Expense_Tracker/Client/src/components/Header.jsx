@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from 'framer-motion';
 import last from "../asset/last.png";
+import Person from "../asset/Person.png";
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -28,7 +29,7 @@ const Header = () => {
               </Link>
             </motion.div>
           </div>
-          <img src={last} alt="header" />
+          <img src={Person} alt="header" />
         </div>
       </div>
     </div>
