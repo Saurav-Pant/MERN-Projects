@@ -11,9 +11,11 @@ import EditExpense from "./components/editExpense"; // Update the import stateme
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
 import Profile from "./components/Profile";
+import { useLocation } from "react-router-dom";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
+  const location = useLocation();
 
   return (
     <div
@@ -22,7 +24,9 @@ const App = () => {
         color: theme.color,
       }}
     >
-      <Navbar />
+      {location.pathname == "/" || location.pathname == "/dashboard" ? (
+        <Navbar />
+      ) : null}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route exact path="/authentication" element={<Authentication />} />
