@@ -3,9 +3,9 @@ const router = express.Router();
 
 const User = require("../models/User");
 
-router.get("/:id", async (req, res) => {
+router.get("/signup/signup", async (req, res) => {
   try {
-    const user = await User.findById(req.params.id);
+    const user = await User.findById(id);
     res.json(user.profile);
   } catch (err) {
     console.error(err.message);
