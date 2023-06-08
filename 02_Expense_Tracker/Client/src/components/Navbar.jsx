@@ -10,7 +10,7 @@ const Header = () => {
   const location = useLocation();
   return (
     <>
-      <div>
+      <div className="border-b-2 border-blue-500 transition-all hover:border-blue-700">
         <div className="max-w-screen-xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center">
             <Link to="/">
@@ -25,21 +25,21 @@ const Header = () => {
                 <br /> <span className="text-2xl pl-3">Tracker</span>
               </h1>
             </Link>
-          </div>        
+          </div>
           <div className="flex justify-center items-center">
             <div>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className="text-3xl drop-shadow-2xl"
-              onClick={toggleTheme}
-            >
-              {theme.icon}
-            </motion.button>
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className="text-3xl drop-shadow-2xl"
+                onClick={toggleTheme}
+              >
+                {theme.icon}
+              </motion.button>
             </div>
             <div className="">
-            {location.pathname === "/dashboard" ? <Profile /> : null}
-          </div>
+              {location.pathname === "/dashboard" ? <Profile /> : null}
+            </div>
           </div>
         </div>
       </div>
