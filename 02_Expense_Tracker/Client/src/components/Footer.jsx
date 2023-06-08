@@ -15,7 +15,7 @@ const Footer = () => {
           </Link>
         </div>
         <div className=" text-gray-500 hover:text-blue-500 transition-colors duration-300 mx-2">
-          <Link to="https://www.linkedin.com/feed/" target="_blank">
+          <Link to="https://www.linkedin.com/in/saurav-pant-790065239/" target="_blank">
             <FiLinkedin />
           </Link>
         </div>
