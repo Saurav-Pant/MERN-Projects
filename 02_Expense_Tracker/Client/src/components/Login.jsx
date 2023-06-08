@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { IoMdArrowRoundBack } from "react-icons/io";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -33,6 +35,20 @@ const Login = () => {
 
   return (
     <div className="flex justify-center items-center h-screen ">
+      <div className="absolute top-10 left-7">
+        <Link
+          to="/"
+          className="px-4 py-2 rounded-ful font-bold bg-gradient-to-br h-20 w-40 transition-colors duration-300 ease-in-out"
+        >
+          <motion.span
+            initial={{ opacity: 0, position: "relative", left: "-100px" }}
+            animate={{ opacity: 1, position: "relative", left: "0px" }}
+            transition={{ duration: 2.5 }}
+          >
+            <IoMdArrowRoundBack size={50} color="red" />
+          </motion.span>
+        </Link>
+      </div>
       <motion.form
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-80"
         initial={{ opacity: 0, y: -50 }}
