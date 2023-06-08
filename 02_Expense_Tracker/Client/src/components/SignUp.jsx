@@ -85,7 +85,7 @@ const Signup = () => {
           <label htmlFor="upload-input">
             <div
               className={`h-32 w-32 rounded-full flex items-center justify-center text-white cursor-pointer ${
-                profile ? "" : "bg-red-500"
+                profile ? "" : "bg-blue-500"
               }`}
             >
               {profile ? (
