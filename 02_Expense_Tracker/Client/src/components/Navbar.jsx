@@ -28,15 +28,15 @@ const Header = () => {
             </Link>
           </div>
           <div className="flex justify-center items-center">
-          <div className="mr-5 mt-2 hover:text-blue-500">
+            <div className="mr-5 mt-2 hover:text-blue-500">
               <motion.button
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 className="text-3xl drop-shadow-2xl"
-                onClick={toggleTheme}
               >
-                <FiGithub/>
-                
+                <Link to="https://github.com/Saurav-Pant/Expense-Tracker" target="_blank" rel="noopener noreferrer">
+                  <FiGithub />
+                </Link>
               </motion.button>
             </div>
             <div>
@@ -50,12 +50,11 @@ const Header = () => {
               </motion.button>
             </div>
             <div className="">
-              {location.pathname === "/dashboard" ? 
-              <div className="hover:text-blue-400 transition-all">
-              <Profile />
-              </div> 
-              
-              : null}
+              {location.pathname === "/dashboard" ? (
+                <div className="hover:text-blue-400 transition-all">
+                  <Profile />
+                </div>
+              ) : null}
             </div>
           </div>
         </div>
