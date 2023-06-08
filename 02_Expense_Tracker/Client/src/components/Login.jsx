@@ -32,9 +32,9 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center  h-screen ">
+    <div className="flex justify-center items-center h-screen ">
       <motion.form
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-80"
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
