@@ -165,7 +165,7 @@ const Signup = () => {
             Sign Up
           </button>
         </div>
-        <div className="inline-block  font-bold text-sm text-blue-500 mt-8 ">
+        <div className="font-bold text-sm text-blue-500 mt-8 text-center ">
           Already have an account?
           <Link to="/login">
             <span className="cursor-pointer underline hover:text-blue-800 pl-3">
