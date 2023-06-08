@@ -66,7 +66,7 @@ const Signup = () => {
           <motion.span
             initial={{ opacity: 0, position: "relative", left: "-100px" }}
             animate={{ opacity: 1, position: "relative", left: "0px" }}
-            transition={{ duration: 2.5 }}
+            transition={{ duration: 1.5 }}
           >
             <IoMdArrowRoundBack size={50} color="red" />
           </motion.span>
