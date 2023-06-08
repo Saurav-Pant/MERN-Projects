@@ -1,14 +1,23 @@
 import React from "react";
+import { FiTwitter, FiLinkedin } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
-    <div className="flex justify-center min-h-[8vh] items-center border-t-2 border-blue-500">
-      <div>
-        <p className="text-blue-500 hover:text-blue-600 transition-colors duration-300">
-          &copy; 2023 Expense Tracker
-        </p>
+    <div className="flex justify-center items-center border-t-2 border-blue-500 py-4">
+      <p className="text-sm text-gray-500">&copy; 2023 Expense Tracker</p>
+      <div className="flex ml-4 text-2xl">
+        <div className=" text-gray-500 hover:text-blue-500 transition-colors duration-300 mx-2 ">
+          <Link to="https://twitter.com">
+            <FiTwitter />
+          </Link>
+        </div>
+        <div className=" text-gray-500 hover:text-blue-500 transition-colors duration-300 mx-2">
+          <Link to="https://www.linkedin.com/feed/">
+            <FiLinkedin />
+          </Link>
+        </div>
       </div>
-      <div></div>
     </div>
   );
 };
