@@ -4,8 +4,11 @@ const Footer = () => {
   return (
     <div className="flex justify-center min-h-[8vh] items-center">
       <div>
-        <p className="">&copy; 2023 Expense Tracker</p>
+        <p className="text-blue-500 hover:text-blue-600 transition-colors duration-300">
+          &copy; 2023 Expense Tracker
+        </p>
       </div>
+      <div></div>
     </div>
   );
 };
