@@ -50,7 +50,12 @@ const Header = () => {
               </motion.button>
             </div>
             <div className="">
-              {location.pathname === "/dashboard" ? <Profile /> : null}
+              {location.pathname === "/dashboard" ? 
+              <div className="hover:text-blue-400 transition-all">
+              <Profile />
+              </div> 
+              
+              : null}
             </div>
           </div>
         </div>
