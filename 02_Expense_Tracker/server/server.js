@@ -13,7 +13,7 @@ const LoginRoute = require("./router/Login");
 const ProfileRoute = require("./router/ProfileImage");
 
 const app = express();
-const MONGO_URI = process.env.LOCAL_MONGO_URL;
+const MONGO_URI = process.env.MONGO_URL;
 
 app.use(express.json({ limit: "10mb" }));
 
@@ -61,6 +61,6 @@ mongoose
   });
 
 // Start the server
-app.listen(process.env.PORT || 3001, () => {
+app.listen(3001, () => {
   console.log("Server is running...");
 });
