@@ -10,22 +10,22 @@ const Footer = () => {
       </p>
       <div className="flex ml-4 text-2xl">
         <div className="text-gray-500 hover:text-blue-500  duration-300 delay-100 mx-2 hover:-translate-y-1 transform transition-transform ease-out">
-          <a
-            href="https://twitter.com"
+          <Link
+            to="https://twitter.com"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FiTwitter />
-          </a>
+          </Link>
         </div>
         <div className="text-gray-500 hover:text-blue-500  duration-300 delay-100 mx-2 hover:-translate-y-1 transform transition-transform ease-out">
-          <a
-            href="https://www.linkedin.com/in/saurav-pant-790065239/"
+          <Link
+            to="https://www.linkedin.com/in/saurav-pant-790065239"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FiLinkedin />
-          </a>
+          </Link>
         </div>
       </div>
     </div>
