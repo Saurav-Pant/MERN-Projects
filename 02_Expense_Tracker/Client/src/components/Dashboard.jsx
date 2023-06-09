@@ -133,12 +133,7 @@ const Dashboard = () => {
       </div> */}
 
       <div className="container mx-auto p-4">
-        <motion.div
-          className="flex flex-wrap justify-center"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
+        <div className="flex flex-wrap justify-center">
           {filteredData.length === 0 ? (
             <div className="text-center text-gray-500 m-auto ">
               <h1 className="text-6xl uppercase relative text-gray-300 animate-bounce">
@@ -182,7 +177,7 @@ const Dashboard = () => {
               </Link>
             ))
           )}
-        </motion.div>
+        </div>
         <AddButton />
       </div>
       {saved && (
