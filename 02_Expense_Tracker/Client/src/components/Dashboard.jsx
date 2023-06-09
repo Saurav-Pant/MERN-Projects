@@ -7,14 +7,13 @@ import Shimmer from "./Shimmer";
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
-  const [filteredData, setFilteredData] = useState([]);
   const [hoverEffect, setHoverEffect] = useState(false);
   const [isShimmer, setIsShimmer] = useState(true);
   const location = useLocation();
   const saved = location.state && location.state.saved;
   const deleted = location.state && location.state.deleted;
 
-   useEffect(() => {
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsShimmer(false);
     }, 1000);
@@ -22,14 +21,13 @@ const Dashboard = () => {
     return () => clearTimeout(timer);
   }, []);
 
-
   useEffect(() => {
     // Fetch data from the backend API
     fetch("http://localhost:3001/api/records/create")
       .then((response) => response.json())
       .then((data) => {
         setData(data);
-        setFilteredData(data);
+        setData(data);
       })
       .catch((error) => console.log("Error:", error));
   }, []);
@@ -72,80 +70,11 @@ const Dashboard = () => {
     localStorage.setItem("deleted", deleted);
   }, [saved, deleted]);
 
-  // Filter data by date and amount
-  const filterData = (startDate, endDate, minAmount, maxAmount) => {
-    const filteredExpenses = data.filter((expense) => {
-      const expenseDate = new Date(expense.date);
-      const expenseAmount = expense.amount;
-
-      return (
-        expenseDate >= startDate &&
-        expenseDate <= endDate &&
-        expenseAmount >= minAmount &&
-        expenseAmount <= maxAmount
-      );
-    });
-
-    setFilteredData(filteredExpenses);
-  };
-
   return (
     <div className="h-[85vh] flex items-center justify-center">
-      {/* Filter section */}
-      {/* <div className="absolute top-28 left-10">
-        <div className="">
-          <label
-            htmlFor=""
-            className="text-lg font-bold mb-2 pr-4"
-          >
-            Search With Date
-          </label>
-          <input
-            type="date"
-            onChange={(e) => {
-              const startDate = new Date(e.target.value);
-              const endDate = new Date();
-              const minAmount = 0;
-              const maxAmount = Infinity;
-              filterData(startDate, endDate, minAmount, maxAmount);
-            }}
-            className="px-4 py-2 rounded-md border border-gray-300 text-gray-700 bg-white focus:outline-none focus:border-blue-500"
-          />
-        </div>
-        <label htmlFor="" className="text-lg font-bold mb-2">
-          Filter With Amount
-        </label>
-        <div className="mt-2">
-          <input
-            type="number"
-            placeholder="Min Amount"
-            onChange={(e) => {
-              const startDate = new Date("1900-01-01");
-              const endDate = new Date();
-              const minAmount = Number(e.target.value);
-              const maxAmount = Infinity;
-              filterData(startDate, endDate, minAmount, maxAmount);
-            }}
-            className="px-4 py-2 rounded border border-gray-300 text-gray-700 bg-white focus:outline-none focus:border-blue-500 mr-2"
-          />
-          <input
-            type="number"
-            placeholder="Max Amount"
-            onChange={(e) => {
-              const startDate = new Date("1900-01-01");
-              const endDate = new Date();
-              const minAmount = 0;
-              const maxAmount = Number(e.target.value);
-              filterData(startDate, endDate, minAmount, maxAmount);
-            }}
-            className="px-4 py-2 rounded border border-gray-300 text-gray-700 bg-white focus:outline-none focus:border-blue-500"
-          />
-        </div>
-      </div> */}
-
       <div className="container mx-auto p-4">
         <div className="flex flex-wrap justify-center">
-          {filteredData.length === 0 ? (
+          {data.length === 0 ? (
             <div className="text-center text-gray-500 m-auto ">
               <h1 className="text-6xl uppercase relative text-gray-300 animate-bounce">
                 <span className={`${hoverEffect ? "text-gray-400" : ""}`}>
@@ -157,7 +86,7 @@ const Dashboard = () => {
               </h1>
             </div>
           ) : (
-            filteredData.map((record) => (
+            data.map((record) => (
               <Link
                 to={{
                   pathname: `/editExpense/${record._id}`,
