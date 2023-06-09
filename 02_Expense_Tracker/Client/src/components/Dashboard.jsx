@@ -5,7 +5,7 @@ import { format } from "date-fns";
 import { Link, useLocation } from "react-router-dom";
 import Shimmer from "./Shimmer";
 
-const Dashboard = () => {
+const Dashboard = React.memo(() => {
   const [data, setData] = useState([]);
   const [hoverEffect, setHoverEffect] = useState(false);
   const [isShimmer, setIsShimmer] = useState(true);
@@ -165,6 +165,6 @@ const Dashboard = () => {
       )}
     </div>
   );
-};
+});
 
 export default Dashboard;
