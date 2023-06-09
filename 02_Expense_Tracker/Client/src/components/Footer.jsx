@@ -9,15 +9,23 @@ const Footer = () => {
         &copy; 2023 Expense Tracker
       </p>
       <div className="flex ml-4 text-2xl">
-        <div className=" text-gray-500 hover:text-blue-500 transition-colors duration-300 mx-2 ">
-          <Link to="https://twitter.com" target="_blank">
+        <div className="text-gray-500 hover:text-blue-500  duration-300 delay-100 mx-2 hover:-translate-y-1 transform transition-transform ease-out">
+          <a
+            href="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FiTwitter />
-          </Link>
+          </a>
         </div>
-        <div className=" text-gray-500 hover:text-blue-500 transition-colors duration-300 mx-2">
-          <Link to="https://www.linkedin.com/in/saurav-pant-790065239/" target="_blank">
+        <div className="text-gray-500 hover:text-blue-500  duration-300 delay-100 mx-2 hover:-translate-y-1 transform transition-transform ease-out">
+          <a
+            href="https://www.linkedin.com/in/saurav-pant-790065239/"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <FiLinkedin />
-          </Link>
+          </a>
         </div>
       </div>
     </div>
