@@ -28,7 +28,9 @@ const Header = () => {
               </Link>
             </motion.div>
           </div>
+          <div className="">
           <img src={Person} alt="header" />
+          </div>
         </div>
       </div>
     </div>
