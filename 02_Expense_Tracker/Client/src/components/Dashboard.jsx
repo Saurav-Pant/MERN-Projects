@@ -3,14 +3,25 @@ import { motion } from "framer-motion";
 import AddButton from "./Add_Button";
 import { format } from "date-fns";
 import { Link, useLocation } from "react-router-dom";
+import Shimmer from "./Shimmer";
 
 const Dashboard = () => {
   const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState([]);
   const [hoverEffect, setHoverEffect] = useState(false);
+  const [isShimmer, setIsShimmer] = useState(true);
   const location = useLocation();
   const saved = location.state && location.state.saved;
   const deleted = location.state && location.state.deleted;
+
+   useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsShimmer(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
 
   useEffect(() => {
     // Fetch data from the backend API
@@ -154,26 +165,30 @@ const Dashboard = () => {
                 }}
                 key={record._id}
               >
-                <motion.div
-                  key={record._id}
-                  className="rounded-lg shadow-xl p-4 mb-4 mr-4 relative w-56 h-40 bg-gradient-to-r from-purple-500 to-indigo-500 transform transition-all duration-300 hover:shadow-2xl  hover:rotate-1 hover:bg-gradient-to-r hover:from-indigo-500 hover:to-blue-500"
-                >
-                  <div className="rounded-lg p-4 w-full h-full absolute top-0 left-0 backdrop-filter backdrop-blur-md transition duration-300 ease-in-out">
-                    <p className="text-lg font-semibold mb-2 text-center text-white z-10 relative">
-                      {record.title}
-                    </p>
-                    <p className="text-gray-300 mb-2 absolute bottom-7 right-2 text-2xl flex justify-center items-center z-10 ">
-                      <span className="text-green-300 mr-1">&#x20B9;</span>
-                      {record.amount}
-                    </p>
-                    <p className="text-gray-300 mb-2 text-center z-10 relative">
-                      {formatDate(record.date)}
-                    </p>
-                    <p className="text-gray-300 mt-10 z-10 relative">
-                      {record.description}
-                    </p>
-                  </div>
-                </motion.div>
+                {isShimmer ? (
+                  <Shimmer />
+                ) : (
+                  <motion.div
+                    key={record._id}
+                    className="rounded-lg shadow-xl p-4 mb-4 mr-4 relative w-56 h-40 bg-gradient-to-r from-purple-500 to-indigo-500 transform transition-all duration-300 hover:shadow-2xl  hover:rotate-1 hover:bg-gradient-to-r hover:from-indigo-500 hover:to-blue-500"
+                  >
+                    <div className="rounded-lg p-4 w-full h-full absolute top-0 left-0 backdrop-filter backdrop-blur-md transition duration-300 ease-in-out">
+                      <p className="text-lg font-semibold mb-2 text-center text-white z-10 relative">
+                        {record.title}
+                      </p>
+                      <p className="text-gray-300 mb-2 absolute bottom-7 right-2 text-2xl flex justify-center items-center z-10 ">
+                        <span className="text-green-300 mr-1">&#x20B9;</span>
+                        {record.amount}
+                      </p>
+                      <p className="text-gray-300 mb-2 text-center z-10 relative">
+                        {formatDate(record.date)}
+                      </p>
+                      <p className="text-gray-300 mt-10 z-10 relative">
+                        {record.description}
+                      </p>
+                    </div>
+                  </motion.div>
+                )}
               </Link>
             ))
           )}
