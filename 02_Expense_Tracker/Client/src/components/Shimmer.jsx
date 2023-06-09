@@ -14,7 +14,7 @@ const Shimmer = () => {
           transition: "opacity 2s ease",
         }}
       >
-        <div className="flex justify-center items-center bg-gray-500 h-4 w-1/2 mb-4 rounded-lg mx-auto"></div>
+        <div className="flex justify-center items-center bg-gray-500 h-4 w-1/2 mb-2 rounded-lg mx-auto"></div>
         <div className="flex justify-center items-center bg-gray-500 h-4 w-1/2 mb-4 rounded-lg mx-auto"></div>
         <div className="flex justify-start items-end bg-gray-500 h-4 w-1/3 rounded-lg ml-auto"></div>
         <div className="flex justify-end items-end bg-gray-500 h-4 w-1/3 rounded-lg mr-auto"></div>

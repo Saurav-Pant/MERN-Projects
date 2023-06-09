@@ -13,6 +13,7 @@ const Dashboard = () => {
   const saved = location.state && location.state.saved;
   const deleted = location.state && location.state.deleted;
 
+  // Shimmer Effect
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsShimmer(false);
@@ -21,8 +22,8 @@ const Dashboard = () => {
     return () => clearTimeout(timer);
   }, []);
 
+  // Fetching Expenses Data
   useEffect(() => {
-    // Fetch data from the backend API
     fetch("http://localhost:3001/api/records/create")
       .then((response) => response.json())
       .then((data) => {
@@ -32,10 +33,13 @@ const Dashboard = () => {
       .catch((error) => console.log("Error:", error));
   }, []);
 
+  // Format Date
   const formatDate = (date) => {
     const formattedDate = format(new Date(date), "dd/MM/yyyy");
     return formattedDate;
   };
+
+  // For No Expenses Found Hovering Effect
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -44,6 +48,8 @@ const Dashboard = () => {
 
     return () => clearInterval(interval);
   }, []);
+
+  // For Saved  Alert
 
   useEffect(() => {
     if (saved) {
@@ -55,6 +61,8 @@ const Dashboard = () => {
     }
   }, [saved]);
 
+  // For Deleted  Alert
+
   useEffect(() => {
     if (deleted) {
       const timeout = setTimeout(() => {
@@ -64,6 +72,8 @@ const Dashboard = () => {
       return () => clearTimeout(timeout);
     }
   }, [deleted]);
+
+  // For Local Storage of Saved and Deleted Alerts
 
   useEffect(() => {
     localStorage.setItem("saved", saved);
@@ -112,7 +122,7 @@ const Dashboard = () => {
                       <p className="text-gray-300 mb-2 text-center z-10 relative">
                         {formatDate(record.date)}
                       </p>
-                      <p className="text-gray-300 mt-10 z-10 relative">
+                      <p className="text-gray-300 mt-14 z-10 relative">
                         {record.description}
                       </p>
                     </div>
