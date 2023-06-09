@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from 'framer-motion';
-import last from "../asset/last.png";
 import Person from "../asset/Person.png";
 import { Link } from "react-router-dom";
 
