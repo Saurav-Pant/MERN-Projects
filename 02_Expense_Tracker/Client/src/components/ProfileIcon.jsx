@@ -13,5 +13,4 @@ const ProfileIcon = () => {
     </div>
   );
 };
-
 export default ProfileIcon;
