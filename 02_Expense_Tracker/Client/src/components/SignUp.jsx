@@ -28,13 +28,16 @@ const Signup = () => {
     e.preventDefault();
 
     try {
-      const profileImageString = await convertToBase64(profile); // Convert the selected image to base64
+      const formData = new FormData();
+      formData.append("profile", profile);
+      formData.append("name", name);
+      formData.append("email", email);
+      formData.append("password", password);
 
-      const res = await axios.post("http://localhost:3001/signup/signup", {
-        profile: profileImageString,
-        name,
-        email,
-        password,
+      const res = await axios.post("http://localhost:3001/signup/signup", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
       });
       console.log(res.data); // Handle success response
       navigate("/dashboard"); // Redirect to the dashboard
@@ -43,21 +46,12 @@ const Signup = () => {
     }
   };
 
-  const convertToBase64 = async (file) => {
-    return new Promise((resolve, reject) => {
-      const fileReader = new FileReader();
-      fileReader.readAsDataURL(file);
-      fileReader.onload = () => resolve(fileReader.result.split(",")[1]); // Extract the base64 string from the data URL
-      fileReader.onerror = (error) => reject(error);
-    });
-  };
-
   const handleFileChange = (event) => {
     setProfile(event.target.files[0]);
   };
 
   return (
-    <div className="flex justify-center items-center h-screen ">
+    <div className="flex justify-center items-center h-screen">
       <div className="absolute top-10 left-7">
         <Link
           to="/"
@@ -80,7 +74,6 @@ const Signup = () => {
         onSubmit={handleSignUp}
       >
         {/* Profile Section */}
-
         <div className="flex justify-center items-center">
           <label htmlFor="upload-input">
             <div

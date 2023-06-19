@@ -2,12 +2,33 @@ const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { check, validationResult } = require("express-validator");
-
+const multer = require("multer");
 const router = express.Router();
 const User = require("../models/User");
 
+// Multer configuration
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "uploads/");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + "-" + file.originalname);
+  },
+});
+
+const fileFilter = (req, file, cb) => {
+  if (file.mimetype.startsWith("image/")) {
+    cb(null, true);
+  } else {
+    cb(new Error("Only image files are allowed."), false);
+  }
+};
+
+const upload = multer({ storage: storage, fileFilter: fileFilter });
+
 router.post(
   "/signup",
+  upload.single("profile"),
   [
     check("name", "Name is required").not().isEmpty(),
     check("email", "Please include a valid email").isEmail(),
@@ -23,7 +44,7 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { profile, name, email, password } = req.body;
+    const { name, email, password } = req.body;
 
     try {
       let user = await User.findOne({ email });
@@ -33,7 +54,7 @@ router.post(
       }
 
       user = new User({
-        profile,
+        profile: req.file.path,
         name,
         email,
         password,

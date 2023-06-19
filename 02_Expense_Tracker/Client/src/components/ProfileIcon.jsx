@@ -6,22 +6,29 @@ const ProfileIcon = () => {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:3001/signup/signup/ProfileImage")
+    fetch("http://localhost:3001/profile/ProfileImg/")
       .then((res) => res.json())
       .then((result) => {
-        console.log(result);
-        setProfile(result);
+        setProfile(result.profile); 
       })
       .catch((err) => {
         console.log(err);
       });
-  }, []); 
+  }, []);
 
   return (
     <div>
       <div className="flex justify-center items-center pl-10">
         <Link to="/profile">
-          {profile ? profile : <CgProfile size={40} />}
+          {profile ? (
+            <img
+              src={profile}
+              alt="Profile"
+              className="w-10 h-10 rounded-full"
+            />
+          ) : (
+            <CgProfile size={40} />
+          )}
         </Link>
       </div>
     </div>
