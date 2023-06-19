@@ -1,9 +1,8 @@
 import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link,useLocation } from "react-router-dom";
 import { ThemeContext } from "../context/theme";
-import { motion } from "framer-motion";
 import Profile from "./ProfileIcon";
-import { useLocation } from "react-router-dom";
+import { motion } from "framer-motion";
 import { FiGithub } from "react-icons/fi";
 
 const Header = () => {
