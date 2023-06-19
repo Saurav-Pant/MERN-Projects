@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Route, Routes } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import { ThemeContext } from "./context/theme";
@@ -10,7 +10,6 @@ import Create from "./components/Create";
 import EditExpense from "./components/editExpense"; // Update the import statement
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
-import Profile from "./components/Profile";
 import { useLocation } from "react-router-dom";
 
 const App = () => {
@@ -35,7 +34,6 @@ const App = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
         <Route exact path="/editExpense/:id" element={<EditExpense />} />
-        <Route path="/profile" element={<Profile />} />
       </Routes>
       <Footer />
     </div>
