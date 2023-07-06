@@ -8,6 +8,7 @@ import { FiGithub } from "react-icons/fi";
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
   const location = useLocation();
+  const token = localStorage.getItem("token");
   return (
     <>
       <div className="border-b-2 border-blue-500 transition-all hover:border-blue-600">
@@ -53,7 +54,12 @@ const Header = () => {
               </motion.button>
             </div>
             <div className="">
-              {location.pathname === "/dashboard" ? (
+              {/* {location.pathname === "/dashboard" ? (
+                <div className="hover:text-blue-400 transition-all">
+                  <Profile />
+                </div>
+              ) : null} */}
+              {token ? (
                 <div className="hover:text-blue-400 transition-all">
                   <Profile />
                 </div>

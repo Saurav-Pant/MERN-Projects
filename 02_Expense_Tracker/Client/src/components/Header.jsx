@@ -1,9 +1,10 @@
 import React from "react";
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 import Person from "../asset/Person.png";
 import { Link } from "react-router-dom";
 
 const Header = () => {
+  const token = localStorage.getItem("token");
   return (
     <div className="flex justify-center ">
       <div className="w-full max-w-[1536px]  px-4 md:px-8 lg:px-20">
@@ -17,19 +18,29 @@ const Header = () => {
               <br />
               contribute to open source in the same time.
             </p>
-            <motion.div whileHover={{
-               scale: 1.1,
-                transition: { duration: 0.5 },                           
-            }}>
-              <Link to="/signup">
-                <button className="rounded-md bg-blue-500 hover:bg-blue-700 py-2 px-4 mx-8 text-white">
-                  Sign In
-                </button>
-              </Link>
+            <motion.div
+              whileHover={{
+                scale: 1.1,
+                transition: { duration: 0.5 },
+              }}
+            >
+              {token ? (
+                <Link to="/dashboard">
+                  <button className="rounded-md bg-blue-500 hover:bg-blue-700 py-2 px-4 mx-8 text-white">
+                    Dashboard
+                  </button>
+                </Link>
+              ) : (
+                <Link to="/signup">
+                  <button className="rounded-md bg-blue-500 hover:bg-blue-700 py-2 px-4 mx-8 text-white">
+                    Sign In
+                  </button>
+                </Link>
+              )}
             </motion.div>
           </div>
           <div className="">
-          <img src={Person} alt="header" />
+            <img src={Person} alt="header" />
           </div>
         </div>
       </div>
