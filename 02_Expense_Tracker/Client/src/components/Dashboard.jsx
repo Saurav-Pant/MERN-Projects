@@ -27,11 +27,14 @@ const Dashboard = React.memo(() => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:3001/api/records/create", {
-          headers: {
-            Authorization: token, 
-          },
-        });
+        const response = await fetch(
+          "http://localhost:3001/api/records/create",
+          {
+            headers: {
+              Authorization: token,
+            },
+          }
+        );
         const data = await response.json();
         // console.log(token)
         setData(data);
@@ -39,10 +42,9 @@ const Dashboard = React.memo(() => {
         console.log("Error:", error);
       }
     };
-  
+
     fetchData();
   }, []);
-  
 
   // Format Date
   const formatDate = (date) => {
@@ -93,7 +95,7 @@ const Dashboard = React.memo(() => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="container mx-auto p-4 relative bottom-14">
+      <div className="container mx-auto p-4 relative bottom-2 md:bottom-14 lg:bottom-16 ">
         <div className="flex flex-wrap justify-center">
           {data.length === 0 ? (
             <div className="text-center text-gray-500 m-auto ">
