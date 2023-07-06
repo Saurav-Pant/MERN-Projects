@@ -24,14 +24,25 @@ const Dashboard = React.memo(() => {
 
   // Fetching Expenses Data
   useEffect(() => {
-    fetch("http://localhost:3001/api/records/create")
-      .then((response) => response.json())
-      .then((data) => {
+    const fetchData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const response = await fetch("http://localhost:3001/api/records/create", {
+          headers: {
+            Authorization: token, 
+          },
+        });
+        const data = await response.json();
+        console.log(token)
         setData(data);
-        setData(data);
-      })
-      .catch((error) => console.log("Error:", error));
+      } catch (error) {
+        console.log("Error:", error);
+      }
+    };
+  
+    fetchData();
   }, []);
+  
 
   // Format Date
   const formatDate = (date) => {

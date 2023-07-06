@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 import Dashboard from "./components/Dashboard";
 import { ThemeContext } from "./context/theme";
 import Navbar from "./components/Navbar";
@@ -15,6 +15,7 @@ import { useLocation } from "react-router-dom";
 const App = () => {
   const { theme } = useContext(ThemeContext);
   const location = useLocation();
+  const token = localStorage.getItem("token");
 
   return (
     <div
@@ -23,13 +24,18 @@ const App = () => {
         color: theme.color,
       }}
     >
-      {location.pathname == "/" || location.pathname == "/dashboard" ? (
+      {location.pathname === "/" || location.pathname === "/dashboard" ? (
         <Navbar />
       ) : null}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route exact path="/authentication" element={<Authentication />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route
+          path="/dashboard"
+          element={
+            token ? <Dashboard /> : <Navigate to="/login" replace={true} />
+          }
+        />
         <Route path="/create" element={<Create />} />
         <Route path="/login" element={<Login />} />
         <Route path="/Signup" element={<Signup />} />
