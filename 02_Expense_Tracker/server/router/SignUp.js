@@ -54,7 +54,7 @@ router.post(
       }
 
       user = new User({
-        profile: req.file.path,
+        // profile: req.file.path,
         name,
         email,
         password,
