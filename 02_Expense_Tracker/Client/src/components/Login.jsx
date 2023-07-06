@@ -9,6 +9,7 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
+  const [errors, setErrors] = useState(null);
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -26,12 +27,16 @@ const Login = () => {
         email,
         password,
       });
-      // console.log(res.data);
-      localStorage.setItem("token", res.data.token); 
-      // console.log(res.data.token)
+      localStorage.setItem("token", res.data.token);
       navigate("/dashboard");
     } catch (err) {
-      console.error(err.response.data);
+      if (err.response && err.response.data.errors) {
+        setErrors(err.response.data.errors.map((error) => error.msg));
+      } else if (err.response && err.response.data.msg) {
+        setErrors([err.response.data.msg]);
+      } else {
+        setErrors(["An error occurred. Please try again."]);
+      }
     }
   };
 
@@ -104,6 +109,14 @@ const Login = () => {
             Forgot Password?
           </a>
         </div>
+
+        {errors && (
+          <div className="text-red-500 mt-7 font-medium text-center text-sm animate-bounce">
+            {errors.map((error, index) => (
+              <div key={index}>{error}</div>
+            ))}
+          </div>
+        )}
       </motion.form>
     </div>
   );

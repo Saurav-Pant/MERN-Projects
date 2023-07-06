@@ -9,7 +9,7 @@ const User = require("../models/User");
 router.post(
   "/login",
   [
-    check("email", "Please include a valid email").isEmail(),
+    check("email", "Please Provide a Valid Email").isEmail(),
     check("password", "Password is required").exists(),
   ],
   async (req, res) => {
@@ -25,13 +25,13 @@ router.post(
       let user = await User.findOne({ email });
 
       if (!user) {
-        return res.status(400).json({ msg: "Invalid Credentials" });
+        return res.status(400).json({ msg: "User Not Found" });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
 
       if (!isMatch) {
-        return res.status(400).json({ msg: "Invalid Credentials" });
+        return res.status(400).json({ msg: "Please Provide Correct Password" });
       }
 
       const payload = {
