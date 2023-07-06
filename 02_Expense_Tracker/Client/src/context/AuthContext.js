@@ -12,9 +12,9 @@ const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  useEffect(() => {
-    console.log("token", token);
-  }, [token]);
+  // useEffect(() => {
+  //   // console.log("token", token);
+  // }, [token]);
 
   const login = (token) => {
     setToken(token);

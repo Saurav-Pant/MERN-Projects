@@ -26,9 +26,9 @@ const Login = () => {
         email,
         password,
       });
-      console.log(res.data);
+      // console.log(res.data);
       localStorage.setItem("token", res.data.token); 
-      console.log(res.data.token)
+      // console.log(res.data.token)
       navigate("/dashboard");
     } catch (err) {
       console.error(err.response.data);

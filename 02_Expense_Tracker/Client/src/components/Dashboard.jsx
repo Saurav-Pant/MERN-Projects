@@ -33,7 +33,7 @@ const Dashboard = React.memo(() => {
           },
         });
         const data = await response.json();
-        console.log(token)
+        // console.log(token)
         setData(data);
       } catch (error) {
         console.log("Error:", error);
