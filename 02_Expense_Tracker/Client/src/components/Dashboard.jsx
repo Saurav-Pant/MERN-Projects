@@ -82,7 +82,7 @@ const Dashboard = React.memo(() => {
 
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="container mx-auto p-4">
+      <div className="container mx-auto p-4 relative bottom-14">
         <div className="flex flex-wrap justify-center">
           {data.length === 0 ? (
             <div className="text-center text-gray-500 m-auto ">

@@ -26,10 +26,10 @@ const Login = () => {
         email,
         password,
       });
-      console.log(res.data); // Handle success response
-      navigate("/dashboard"); // Redirect to the dashboard
+      console.log(res.data);
+      navigate("/dashboard");
     } catch (err) {
-      console.error(err.response.data); // Handle error response
+      console.error(err.response.data);
     }
   };
 
