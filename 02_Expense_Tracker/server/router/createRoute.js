@@ -32,4 +32,18 @@ router
     }
   });
 
+// create a new route to fetch a specific expense record
+
+router.get("/:id", async (req, res) => {
+  try {
+    const record = await ExpenseRecord.findOne({ _id: req.params.id });
+    if (!record) {
+      return res.status(404).json({ error: "Expense record not found." });
+    }
+    res.status(200).json(record);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to fetch the record." });
+  }
+});
+
 module.exports = router;
