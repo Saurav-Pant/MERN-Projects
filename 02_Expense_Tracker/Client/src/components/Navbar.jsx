@@ -54,11 +54,6 @@ const Header = () => {
               </motion.button>
             </div>
             <div className="">
-              {/* {location.pathname === "/dashboard" ? (
-                <div className="hover:text-blue-400 transition-all">
-                  <Profile />
-                </div>
-              ) : null} */}
               {token ? (
                 <div className="hover:text-blue-400 transition-all">
                   <Profile />
