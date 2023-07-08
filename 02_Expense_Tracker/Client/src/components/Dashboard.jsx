@@ -103,7 +103,7 @@ const Dashboard = React.memo(() => {
             <div className="text-center text-gray-500 m-auto ">
               <h1 className="text-6xl uppercase relative text-gray-300 animate-bounce">
                 <span className={`${hoverEffect ? "text-gray-400" : ""}`}>
-                  No expenses found.
+                  Add Expenses
                 </span>
                 <span className="animate-pulse absolute top-0 left-0 text-gray-400 h-full w-full">
                   &nbsp;
