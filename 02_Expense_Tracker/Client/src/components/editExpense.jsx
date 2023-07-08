@@ -44,8 +44,6 @@ const EditExpense = () => {
         }),
       });
       if (response.ok) {
-        // Expense updated successfully
-        console.log("Expense updated");
         navigate("/dashboard", { state: { saved: true } }); 
       } else {
         // Failed to update the expense
@@ -62,8 +60,6 @@ const EditExpense = () => {
         method: "DELETE",
       });
       if (response.ok) {
-        // Expense deleted successfully
-        console.log("Expense deleted");
         navigate("/dashboard", { state: { deleted: true } }); 
       } else {
         // Failed to delete the expense

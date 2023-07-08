@@ -31,7 +31,6 @@ const Create = () => {
       if (response.ok) {
         // Record saved successfully
         const data = await response.json();
-        console.log("Record saved:", data);
         // Reset the form
         setTitle("");
         setAmount("");
@@ -44,7 +43,6 @@ const Create = () => {
       }
       
     } catch (error) {
-      console.log("Error:", error);
     }
   };
 

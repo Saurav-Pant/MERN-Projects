@@ -39,7 +39,6 @@ const Dashboard = React.memo(() => {
         );
         const data = await response.json();
         setData(data);
-        console.log(data);
       } catch (error) {
         console.log("Error:", error);
       }
