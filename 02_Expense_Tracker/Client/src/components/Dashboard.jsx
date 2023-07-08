@@ -27,8 +27,10 @@ const Dashboard = React.memo(() => {
     const fetchData = async () => {
       try {
         const token = localStorage.getItem("token");
+        const userId = localStorage.getItem("userId"); // Retrieve the user's ID from the local storage
+        console.log("User ID:", userId)
         const response = await fetch(
-          "http://localhost:3001/api/records/create",
+          `http://localhost:3001/api/records/create?userId=${userId}`, // Include the user's ID in the query parameters
           {
             headers: {
               Authorization: token,
@@ -36,8 +38,8 @@ const Dashboard = React.memo(() => {
           }
         );
         const data = await response.json();
-        // console.log(token)
         setData(data);
+        console.log(data);
       } catch (error) {
         console.log("Error:", error);
       }

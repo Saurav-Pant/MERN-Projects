@@ -25,6 +25,7 @@ const Create = () => {
           amount,
           date: selectedDate,
           description,
+          userId: localStorage.getItem("userId"), 
         }),
       });
       if (response.ok) {
@@ -39,8 +40,9 @@ const Create = () => {
         navigate("/dashboard", { state: { saved: true } }); // Redirect to the dashboard page with the saved state
       } else {
         // Failed to save the record
-        console.log("Failed to save the record");
+        console.log("Failed to save the record. Server response:", await response.json());
       }
+      
     } catch (error) {
       console.log("Error:", error);
     }

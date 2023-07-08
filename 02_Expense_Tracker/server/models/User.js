@@ -24,6 +24,6 @@ const UserSchema = new mongoose.Schema({
   },
 });
 
-const userData = mongoose.model("user", UserSchema);
+const userData = mongoose.model("User", UserSchema);
 
 module.exports = userData;
