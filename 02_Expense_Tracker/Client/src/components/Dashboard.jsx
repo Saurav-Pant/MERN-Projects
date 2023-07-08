@@ -28,7 +28,7 @@ const Dashboard = React.memo(() => {
       try {
         const token = localStorage.getItem("token");
         const userId = localStorage.getItem("userId"); // Retrieve the user's ID from the local storage
-        console.log("User ID:", userId)
+        console.log("User ID:", userId);
         const response = await fetch(
           `http://localhost:3001/api/records/create?userId=${userId}`, // Include the user's ID in the query parameters
           {
@@ -103,7 +103,7 @@ const Dashboard = React.memo(() => {
             <div className="text-center text-gray-500 m-auto ">
               <h1 className="text-6xl uppercase relative text-gray-300 animate-bounce">
                 <span className={`${hoverEffect ? "text-gray-400" : ""}`}>
-                  Add Expenses
+                  ADD Expenses
                 </span>
                 <span className="animate-pulse absolute top-0 left-0 text-gray-400 h-full w-full">
                   &nbsp;
