@@ -11,6 +11,7 @@ import EditExpense from "./components/editExpense"; // Update the import stateme
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
 import { useLocation, Navigate } from "react-router-dom";
+import ProfileIcon from "./components/ProfileIcon";
 
 const App = () => {
   const { theme } = useContext(ThemeContext);
