@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { ThemeContext } from "../context/theme";
 import Profile from "./ProfileIcon";
 import { motion } from "framer-motion";
@@ -7,7 +7,6 @@ import { FiGithub } from "react-icons/fi";
 
 const Header = () => {
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const location = useLocation();
   const token = localStorage.getItem("token");
   return (
     <>
