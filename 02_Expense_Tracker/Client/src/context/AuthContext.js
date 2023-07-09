@@ -12,10 +12,6 @@ const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  // useEffect(() => {
-  //   // console.log("token", token);
-  // }, [token]);
-
   const login = (token) => {
     setToken(token);
     localStorage.setItem("token", token);
