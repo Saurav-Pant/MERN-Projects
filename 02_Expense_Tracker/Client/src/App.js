@@ -7,7 +7,7 @@ import Authentication from "./pages/Authentication";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
 import Create from "./components/Create";
-import EditExpense from "./components/editExpense"; // Update the import statement
+import EditExpense from "./components/editExpense";
 import Login from "./components/Login";
 import Signup from "./components/SignUp";
 import { useLocation, Navigate } from "react-router-dom";
