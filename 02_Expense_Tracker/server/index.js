@@ -1,7 +1,6 @@
 const express = require("express");
 const cors = require("cors");
 const session = require("express-session");
-const passport = require("passport");
 const createRoute = require("./router/createRoute");
 const editRoute = require("./router/editRoute");
 const SignupRoute = require("./router/SignUp");
@@ -25,9 +24,6 @@ app.use(
     credentials: true,
   })
 );
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use("/api/records", createRoute); // Route for expense records
 app.use("/edit", editRoute); // Route for edit
