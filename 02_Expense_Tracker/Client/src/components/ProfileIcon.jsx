@@ -24,11 +24,43 @@ const ProfileIcon = () => {
     setShowLogout(!showLogout);
   };
 
+  const buttonVariants = {
+    hover: {
+      scale: 1.1,
+    },
+    tap: {
+      scale: 0.9,
+    },
+  };
+
+  const logoutButtonVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
+  };
+
+  const loadingSpinnerVariants = {
+    hidden: {
+      opacity: 0,
+    },
+    visible: {
+      opacity: 1,
+    },
+
+    transition: {
+      delay: 0.5,
+    },
+  };
+
   return (
     <div className="flex items-center justify-center">
       <motion.button
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
+        variants={buttonVariants}
+        whileHover="hover"
+        whileTap="tap"
         className="p-2 focus:outline-none"
         onClick={toggleLogout}
       >
@@ -36,20 +68,30 @@ const ProfileIcon = () => {
       </motion.button>
 
       {showLogout && !loggingOut && (
-        <div className="ml-2">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={logoutButtonVariants}
+          className="ml-2"
+        >
           <button
             className="px-4 py-2 pl-5 rounded bg-red-500 hover:bg-red-700 text-white font-bold"
             onClick={handleLogout}
           >
             Logout
           </button>
-        </div>
+        </motion.div>
       )}
 
       {loggingOut && (
-        <div className="ml-2">
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={loadingSpinnerVariants}
+          className="ml-2"
+        >
           <LoadingSpinner />
-        </div>
+        </motion.div>
       )}
     </div>
   );
